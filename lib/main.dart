@@ -5,41 +5,27 @@ import 'package:provider/provider.dart';
 import '../providers/booking_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-
-        // Define the default brightness and colors.
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Color(0xFF3627aa),
-          //brightness: Brightness.dark,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => BookingsProvider(),
         ),
-
-        // textTheme: TextTheme(
-        //   displayLarge: const TextStyle(
-        //     fontSize: 72,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        //   // ···
-        //   titleLarge: GoogleFonts.oswald(
-        //     fontSize: 30,
-        //     fontStyle: FontStyle.italic,
-        //   ),
-        //   bodyMedium: GoogleFonts.merriweather(),
-        //   displaySmall: GoogleFonts.pacifico(),
-        // ),
-      ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => BookingProvider()),
-        ],
-        child: Dashboard(),
+      ],
+      child: MaterialApp(
+        theme: ThemeData.dark().copyWith(
+          primaryColor: Colors.deepPurple[700],
+          primaryColorLight: Colors.white,
+        ),
+        home: const Dashboard(),
       ),
     );
   }

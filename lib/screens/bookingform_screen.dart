@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/booking.dart';
 import '../providers/booking_provider.dart';
 
 class BookingFormScreen extends StatelessWidget {
+
+  BookingFormScreen({super.key});
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController checkInController = TextEditingController();
   final TextEditingController checkOutController = TextEditingController();
@@ -11,9 +15,10 @@ class BookingFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bookingsProvider = Provider.of<BookingsProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Booking'),
+        title: const Text('New Booking'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -37,20 +42,16 @@ class BookingFormScreen extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(labelText: 'Room Number'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                build:
-                (context, child) {
-                  return context.read<BookingProvider>().addBooking(
-                        Booking(
-                          guestName: nameController.text,
-                          checkInDate: checkInController.text,
-                          checkOutDate: checkOutController.text,
-                          roomId: int.parse(roomController.text),
-                        ),
-                      );
-                };
+                bookingsProvider.addBooking(Booking(
+                  guestName: nameController.text,
+                  checkInDate: checkInController.text,
+                  checkOutDate: checkOutController.text,
+                  roomId: int.parse(roomController.text),
+                ),
+                );
                 Navigator.pop(context);
               },
               child: const Text(
