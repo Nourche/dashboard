@@ -1,19 +1,14 @@
 // user_screen.dart
-import 'package:dashboard/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/users_provider.dart';
 import '../widgets/add_user.dart';
 
 class UserScreen extends StatelessWidget {
-  // Sample list of users
-  final List<User> users = [
-    User(name: 'Amina Hampo', lastBookingDate: '20-03-2021'),
-    User(name: 'Raid Sohail', lastBookingDate: '30-05-2021'),
-    // Add more users as needed
-  ];
-
   @override
   Widget build(BuildContext context) {
+    var users = context.watch<UserProvider>().Users;
     return Scaffold(
       appBar: AppBar(
         title: Text('Users '),
@@ -22,12 +17,16 @@ class UserScreen extends StatelessWidget {
         itemCount: users.length,
         itemBuilder: (context, index) {
           final user = users[index];
-          final e = user.lastBookingDate;
+          final e = user.phone;
 
-          return ListTile(
-            title: Text(user.name),
-            subtitle:
-                e != null ? Text('Last Booking: ${e}') : Text('No bookings'),
+          return Card(
+            elevation: 3,
+            margin: EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text(user.name),
+              subtitle:
+                  e != null ? Text('Last Booking: ${e}') : Text('No bookings'),
+            ),
           );
         },
       ),

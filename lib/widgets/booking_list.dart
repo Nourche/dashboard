@@ -12,9 +12,13 @@ class BookingList extends StatelessWidget {
       itemCount: bookings.length,
       itemBuilder: (context, index) {
         var booking = bookings[index];
-        return ListTile(
-          title: Text(booking.guestName),
-          subtitle: Text('${booking.checkInDate} - ${booking.checkOutDate}'),
+        return Card(
+          elevation: 3,
+          margin: EdgeInsets.all(8.0),
+          child: ListTile(
+            title: Text(booking.guestName),
+            subtitle: Text('${booking.checkInDate} - ${booking.checkOutDate}'),
+          ),
         );
       },
     );

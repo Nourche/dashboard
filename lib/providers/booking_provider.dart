@@ -9,4 +9,11 @@ class BookingProvider with ChangeNotifier {
     bookings.add(booking);
     notifyListeners();
   }
+
+  void checkRoom(String id) {
+    if (bookings.any((booking) => booking.roomId == id)) {
+      print('Booking impossible');
+    } else
+      print('room is available');
+  }
 }

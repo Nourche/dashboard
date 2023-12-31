@@ -41,6 +41,7 @@ class BookingFormScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
+                context.read<BookingProvider>().checkRoom(roomController.text);
                 context.read<BookingProvider>().addBooking(
                       Booking(
                         guestName: nameController.text,

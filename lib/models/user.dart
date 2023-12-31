@@ -1,10 +1,10 @@
 // user.dart
 class User {
   String name;
-  String lastBookingDate;
+  String phone;
 
   User({
     required this.name,
-    required this.lastBookingDate,
+    required this.phone,
   });
 }
