@@ -2,12 +2,15 @@ import 'package:dashboard/models/room.dart';
 import 'package:flutter/material.dart';
 
 class RoomScreen extends StatelessWidget {
-  // Sample list of rooms
   final List<Room> rooms = [
     Room(roomId: '101', capacity: 2, isAvailable: true),
     Room(roomId: '102', capacity: 4, isAvailable: false),
     Room(roomId: '103', capacity: 3, isAvailable: true),
-    // Add more rooms as needed
+    Room(roomId: '104', capacity: 2, isAvailable: true),
+    Room(roomId: '105', capacity: 1, isAvailable: true),
+    Room(roomId: '106', capacity: 1, isAvailable: true),
+    Room(roomId: '107', capacity: 3, isAvailable: true),
+    Room(roomId: '108', capacity: 3, isAvailable: true),
   ];
 
   @override

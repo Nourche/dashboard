@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/booking.dart';
 import '../providers/booking_provider.dart';
@@ -40,23 +41,18 @@ class BookingFormScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                build:
-                (context, child) {
-                  return context.read<BookingProvider>().addBooking(
-                        Booking(
-                          guestName: nameController.text,
-                          checkInDate: checkInController.text,
-                          checkOutDate: checkOutController.text,
-                          roomId: int.parse(roomController.text),
-                        ),
-                      );
-                };
+                context.read<BookingProvider>().addBooking(
+                      Booking(
+                        guestName: nameController.text,
+                        checkInDate: checkInController.text,
+                        checkOutDate: checkOutController.text,
+                        roomId: int.parse(roomController.text),
+                      ),
+                    );
+
                 Navigator.pop(context);
               },
-              child: const Text(
-                'Book Now',
-                style: TextStyle(color: Colors.white),
-              ),
+              child: Text('Book Now'),
             ),
           ],
         ),

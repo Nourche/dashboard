@@ -2,6 +2,8 @@
 import 'package:dashboard/models/user.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/add_user.dart';
+
 class UserScreen extends StatelessWidget {
   // Sample list of users
   final List<User> users = [
@@ -14,7 +16,7 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Users and Bookings'),
+        title: Text('Users '),
       ),
       body: ListView.builder(
         itemCount: users.length,
@@ -28,6 +30,17 @@ class UserScreen extends StatelessWidget {
                 e != null ? Text('Last Booking: ${e}') : Text('No bookings'),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return AddUserForm();
+            },
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

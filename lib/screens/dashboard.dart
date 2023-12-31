@@ -67,8 +67,6 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
-
-      // body: BookingList(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -164,7 +162,6 @@ class Dashboard extends StatelessWidget {
           ),
         ],
       ),
-
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
@@ -172,7 +169,10 @@ class Dashboard extends StatelessWidget {
             MaterialPageRoute(builder: (context) => BookingFormScreen()),
           );
         },
-        label: const Text('Book Now'),
+        label: const Text(
+          'Book Now',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: const Color(0xFF3627aa),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
